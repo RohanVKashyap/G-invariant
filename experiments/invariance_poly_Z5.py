@@ -74,11 +74,11 @@ def main(args):
     # 5. Run everything
     train_step, val_step = 0, 0
     best_accuracy = 1e10
-    for epoch in range(args.num_epochs):
+    for epoch in tqdm(range(args.num_epochs)):
         # 5.1. Training Loop
         experiment_handler.log_training()
         acc = []
-        for i in tqdm(range(ts), "Train"):
+        for i in range(ts):
             # 5.1.1. Make inference of the model, calculate losses and record gradients
             with tf.GradientTape(persistent=True) as tape:
                 pred = model(train_ds[i])
