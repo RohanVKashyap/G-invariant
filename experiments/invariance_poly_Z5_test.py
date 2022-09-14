@@ -7,7 +7,9 @@ from time import time
 import numpy as np
 
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-from experiments.invariance_poly_Z5 import poly_Z5
+#from experiments.invariance_poly_Z5 import poly_Z5
+from utils.permutation_groups import Z5
+from utils.polynomials import poly_Z5
 from models.poly import *
 from utils.permutation_groups import Z5
 
@@ -49,8 +51,7 @@ def main():
     # 2. Define model
     path = "./paper/poly/"
 
-    models = [("my_inv_fc", GroupInvariance(Z5, 64)), ("conv_my_inv", GroupInvarianceConv(Z5, 116)),
-              ("avg_fc", SimpleNet()), ("conv_avg_imp", Conv1d()), ("maron_sw", Maron())]
+    models = [("my_inv_fc", GroupInvariance(Z5, 64)), ("conv_my_inv", GroupInvarianceConv(Z5, 116))]
 
     results = []
     for base_name, model in models:
