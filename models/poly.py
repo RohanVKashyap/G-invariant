@@ -58,8 +58,8 @@ class GroupInvariance(tf.keras.Model):
         ]
 
     def call(self, inputs):
-        x = self.fc1(inputs)
-        x = x[:, :, tf.newaxis]
+        inputs = self.fc1(inputs)
+        x = inputs[:, :, tf.newaxis]
         x = apply_layers(x, self.features)
         x = tf.reshape(x, (-1, self.n, self.num_features, self.n))
         x = sigmaPi(x, self.m, self.n, self.p)
