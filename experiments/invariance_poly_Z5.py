@@ -129,7 +129,7 @@ def main(args):
         # 5.2. Validation Loop
         experiment_handler.log_validation()
         acc = []
-        for i in tqdm(range(vs), "Val"):
+        for i in range(vs):
             # 5.2.1 Make inference of the model for validation and calculate losses
             pred = model(val_ds[i])
             if len(pred) == 2:
