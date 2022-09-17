@@ -42,7 +42,7 @@ class GroupInvariance(tf.keras.Model):
         self.m = len(perm)
         self.p = prepare_permutation_matices(perm, self.n, self.m)
         
-        self.fc1 = tf.keras.kayers.Dense(5, activation=None)
+        self.fc1 = tf.keras.layers.Dense(5, activation=None)
 
         self.features = [
             tf.keras.layers.Dense(16, activation),
