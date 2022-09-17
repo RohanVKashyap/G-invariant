@@ -41,6 +41,8 @@ class GroupInvariance(tf.keras.Model):
         self.n = len(perm[0])
         self.m = len(perm)
         self.p = prepare_permutation_matices(perm, self.n, self.m)
+        
+        self.fc1 = tf.keras.kayers.Dense(5, activation=None)
 
         self.features = [
             tf.keras.layers.Dense(16, activation),
@@ -56,7 +58,8 @@ class GroupInvariance(tf.keras.Model):
         ]
 
     def call(self, inputs):
-        x = inputs[:, :, tf.newaxis]
+        x = self.fc1(inputs)
+        x = x[:, :, tf.newaxis]
         x = apply_layers(x, self.features)
         x = tf.reshape(x, (-1, self.n, self.num_features, self.n))
         x = sigmaPi(x, self.m, self.n, self.p)
