@@ -51,7 +51,8 @@ def main():
     # 2. Define model
     path = "./paper/poly/"
 
-    models = [("my_inv_fc", GroupInvariance(Z5, 64)), ("conv_my_inv", GroupInvarianceConv(Z5, 116))]
+    #models = [("my_inv_fc", GroupInvariance(Z5, 64)), ("conv_my_inv", GroupInvarianceConv(Z5, 116))]
+    models = [("my_inv_fc", GroupInvariance(Z5, 64))]
 
     results = []
     for base_name, model in models:
@@ -84,8 +85,10 @@ def main():
                 print(np.mean(acc))
                 mae.append(np.mean(acc))
                 mape.append(np.mean(per))
-            results.append((base_name, ds_name, np.mean(mae), np.std(mae), np.mean(times[1:]), np.std(times[1:])))
-            print(base_name, ds_name, np.mean(mae), np.std(mae), np.mean(times[1:]), np.std(times[1:]))
+            #results.append((base_name, ds_name, np.mean(mae), np.std(mae), np.mean(times[1:]), np.std(times[1:])))
+            results.append((base_name, ds_name, np.mean(mae)))
+            #print(base_name, ds_name, np.mean(mae), np.std(mae), np.mean(times[1:]), np.std(times[1:]))
+            print(base_name, ds_name, np.mean(mae))
 
     with open("./paper/poly.csv", 'w') as fh:
         for r in results:
