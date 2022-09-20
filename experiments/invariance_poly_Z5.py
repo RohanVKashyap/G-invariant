@@ -17,7 +17,7 @@ from argparse import ArgumentParser
 
 import tensorflow as tf
 import tensorflow.contrib as tfc
-from tqdm import tqdm
+from tqdm.auto import tqdm
 
 from utils.execution import ExperimentHandler, LoadFromFile
 
@@ -121,7 +121,7 @@ def main(args):
         with tfc.summary.always_record_summaries():
             tfc.summary.scalar('epoch/accuracy', np.mean(acc), step=epoch)
 
-        with open(args.working_path + "/" + args.out_name + "/" + model.name + ".csv", 'a') as fh:
+        with open(args.working_path + "/" + args.out_name + "_L1" + "/" + model.name + ".csv", 'a') as fh:
             fh.write("TRAIN, %d, %.6f\n" % (epoch, np.mean(acc)))
 
         #    accuracy.result()
@@ -152,13 +152,13 @@ def main(args):
         with tfc.summary.always_record_summaries():
             tfc.summary.scalar('epoch/accuracy', epoch_accuracy, step=epoch)
 
-        with open(args.working_path + "/" + args.out_name + "/" + model.name + ".csv", 'a') as fh:
+        with open(args.working_path + "/" + args.out_name + "_L1" + "/" + model.name + ".csv", 'a') as fh:
             fh.write("VAL, %d, %.6f\n" % (epoch, epoch_accuracy))
 
 
         # 5.3 Save last and best
         if epoch_accuracy < best_accuracy:
-            model.save_weights(args.working_path + "/" + args.out_name + "/checkpoints/best-" + str(epoch))
+            model.save_weights(args.working_path + "/" + args.out_name + "_L1" + "/checkpoints/best-" + str(epoch))
             best_accuracy = epoch_accuracy
 
         experiment_handler.flush()
