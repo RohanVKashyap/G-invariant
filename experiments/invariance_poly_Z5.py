@@ -95,7 +95,7 @@ def main(args):
                             for s in l.shape:
                                 a *= s
                             nw += a
-                    print(nw)
+                    #print(nw)
 
                 y = poly_Z5(train_ds[i])
                 model_loss = tf.keras.losses.mean_absolute_error(y[:, tf.newaxis], pred)
