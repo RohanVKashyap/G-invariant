@@ -86,13 +86,13 @@ def main():
                 mae.append(np.mean(acc))
                 mape.append(np.mean(per))
             #results.append((base_name, ds_name, np.mean(mae), np.std(mae), np.mean(times[1:]), np.std(times[1:])))
-            results.append((base_name, ds_name, np.mean(mae)))
+            results.append((base_name, ds_name, np.mean(mae), np.std(mae)))
             #print(base_name, ds_name, np.mean(mae), np.std(mae), np.mean(times[1:]), np.std(times[1:]))
-            print(base_name, ds_name, np.mean(mae))
+            print(base_name, ds_name, np.mean(mae), np.std(mae))
 
     with open("./paper/poly.csv", 'w') as fh:
         for r in results:
-            fh.write("%s\t%s\t%.5f\t%.5f\t%.6f\t%.6f\n" % r)
+            fh.write("%s\t%s\t%.5f\t%.5f\n" % r)
 
 
 if __name__ == '__main__':
