@@ -45,8 +45,8 @@ def poly_Z8_Z16(x):
         return a * b ** 2
 
     a, b, c, d, e, f , g , h, i, j, k, l, m, n, o, p = tf.unstack(x, axis=1)
-    q1 = inv1(a, b) + inv1(b, c) + inv1(c, d) + inv1(d, e) + inv1(e, f) + inv1(f, g) + inv1(g, h) \
-         + inv1(h, a)
+    q1 = inv1(a, b) + inv1(b, c) + inv1(c, d) + inv1(d, e) + inv1(e, f) \
+         + inv1(f, g) + inv1(g, h) + inv1(h, a)
     return q1
 
 def poly_Z4_Z16(x):
