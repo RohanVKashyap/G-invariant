@@ -57,8 +57,11 @@ def main(args):
         model = GroupInvarianceConv(Z5, 116)
     elif args.model == "FC_G-avg":
         model = SimpleNet()
+    elif args.model == "Simple_FC":
+        model = Simple_FC()    
     elif args.model == "Conv1D_G-avg":
         model = Conv1d()
+        
     elif args.model == "Maron":
         model = Maron()
     else:
