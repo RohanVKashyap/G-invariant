@@ -87,6 +87,22 @@ class SimpleNet(tf.keras.Model):
         return x
 
 
+class Simple_FC(tf.keras.Model):
+    def __init__(self):
+        super(Simple_FC, self).__init__()
+        activation = tf.keras.activations.tanh
+        self.features = [
+            tf.keras.layers.Dense(89, activation),
+            tf.keras.layers.Dense(6 * 32, activation),
+            tf.keras.layers.Dense(32, activation),
+            tf.keras.layers.Dense(1),
+        ]
+
+    def call(self, inputs):
+        x = apply_layers(inputs, self.features)
+        return x
+    
+
 class GroupInvarianceConv(tf.keras.Model):
     def __init__(self, perm, num_features, activation=tf.keras.activations.tanh):
         super(GroupInvarianceConv, self).__init__()
