@@ -8,8 +8,8 @@ import numpy as np
 
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 #from experiments.invariance_poly_Z5 import poly_Z5
-from utils.permutation_groups import Z5
-from utils.polynomials import poly_Z5
+from utils.permutation_groups import *
+from utils.polynomials import *
 from models.poly import *
 from utils.permutation_groups import Z5
 
