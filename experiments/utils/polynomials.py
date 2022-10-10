@@ -63,6 +63,7 @@ def poly_Z2_Z16(x):
 
     a, b, c, d, e, f , g , h, i, j, k, l, m, n, o, p = tf.unstack(x, axis=1)
     q1 = inv1(a, b) + inv1(b, a)
+    return q1
 
 
 def poly_D8(x):
