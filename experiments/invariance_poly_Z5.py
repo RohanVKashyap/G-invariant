@@ -58,7 +58,9 @@ def main(args):
     elif args.model == "FC_G-avg":
         model = SimpleNet()
     elif args.model == "Simple_FC":
-        model = Simple_FC()    
+        model = Simple_FC()
+    elif args.model == "Simple_Conv1d":
+        model = Simple_Conv1d()    
     elif args.model == "Conv1D_G-avg":
         model = Conv1d()
         
