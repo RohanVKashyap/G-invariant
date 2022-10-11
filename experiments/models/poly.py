@@ -132,7 +132,30 @@ class GroupInvarianceConv(tf.keras.Model):
         x = apply_layers(x, self.fc)
         return x
 
+class Simple_Conv1d(tf.keras.Model):
+    def __init__(self):
+        super(Simple_Conv1d, self).__init__()
+        activation = tf.keras.activations.tanh
+        self.last_n = 118
+        self.features = [
+            tf.keras.layers.Conv1D(32, 3, activation=activation),
+            tf.keras.layers.Conv1D(self.last_n, 1, activation=activation),
+        ]
+        self.fc = [
+            tf.keras.layers.Dense(32, activation=activation),
+            tf.keras.layers.Dense(32, activation=activation),
+            tf.keras.layers.Dense(1),
+        ]
 
+    def call(self, x):
+        bs = x.shape[0]
+        x = tf.concat([x[:, -1:], x, x[:, :1]], axis=1)[:, :, tf.newaxis]
+        x = apply_layers(x, self.features)
+        x = tf.reshape(x, (bs, -1))
+        x = apply_layers(x, self.fc)
+        return x
+    
+    
 class Conv1d(tf.keras.Model):
     def __init__(self):
         super(Conv1d, self).__init__()
