@@ -3,12 +3,7 @@
 This repository contains the code associated with the paper **"Neural Discovery of Permutation Subgroups"** accepted as contributed talk (extended oral presentation) at [AISTATS 2023](http://aistats.org/aistats2023/).
 
 ### Short description
-This repository contains implementation of the G-invariant neural networks.
-Those networks are able to approximate functions invariant to the action of a given subgroup G
-of the symmetric group on the input data.
-The key element of the proposed network architecture is a new G-invariant transformation module,
-which produces a G-invariant latent representation of the input data.
-This latent representation is then processed with a multi-layer perceptron in the network.
+We consider the problem of discovering subgroup $H$ of permutation group $S_n$. Unlike the traditional $H$-invariant networks wherein $H$ is assumed to be known, we present a method to discover the underlying subgroup, given that it satisfies certain conditions. Our results show that one could discover any subgroup of type $S_k (k \leq n)$ by learning an $S_n$-invariant function and a linear transformation. We also prove similar results for cyclic and dihedral subgroups. Finally, we provide a general theorem that can be extended to discover other subgroups of $S_n$. We also demonstrate the applicability of our results through numerical experiments on image-digit sum and symmetric polynomial regression tasks.
 
 ### Repository structure
 
